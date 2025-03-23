@@ -84,7 +84,7 @@ Release Notes:
 	- Added seizure warning on boot screen.
 	- Adjusted game over screen messages.
 	- Splash screen can be skipped by pressing escape key.
-	- Reduced score requirment for leveling up.
+	- Reduced score requirement for leveling up.
 	- New main menu tips.
 - Version 1.0.2:
 	- Updated engine version (Godot 4.4).
