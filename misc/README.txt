@@ -20,7 +20,7 @@ Credits:
 - Music: Ryan Atari on https://www.instagram.com/ryan.atari/
 
 Executing Game:
-- For Linux (x84_64):
+- For Linux (x86_64):
 	- Double click the executable (.x84_64). Or run from the terminal (./AsteroidsGB.x86_64).
 	- If the game doesn't launch, open a terminal in the project directory and run this command: chmod +x ./AsteroidsGB.x86_64
 	- Alternatively right click the executable and find the permissions option. Toggle the permission that says: Allow executing file as a program. Options may vary with different file managers.
