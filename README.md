@@ -3,7 +3,9 @@ Remake of the classic Asteroids game in the Godot Engine. This is a take on the 
 
 | Menu                   | Game                   |
 | ---------------------- | ---------------------- |
-| ![menu](https://github.com/user-attachments/assets/d90f6d19-c90f-4174-9a7b-02e8c3a40995) | ![game](https://github.com/user-attachments/assets/905ae027-0463-4b20-b08f-5fe705fa5e3a) |
+| ![menu](https://github.com/user-attachments/assets/cfd41369-6997-4775-b9b9-8a43a8dbab06) | ![game](https://github.com/user-attachments/assets/aa94758e-009a-4e07-a711-d315f353fd26) |
+
+
 
 # Controls
 Controls can be found in the game's Option Menu, or the `README.txt` file included with the executable. Keyboard and Controller are supported as input methods. <br/>
