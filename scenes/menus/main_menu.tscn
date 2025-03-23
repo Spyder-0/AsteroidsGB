@@ -1,0 +1,452 @@
+[gd_scene load_steps=14 format=3 uid="uid://deyv2tsrdd8ta"]
+
+[ext_resource type="Script" uid="uid://5wnjbavq7ido" path="res://scenes/menus/main_menu.gd" id="1_sp1xj"]
+[ext_resource type="Texture2D" uid="uid://c0mtqf6m0x8fs" path="res://assets/sprites/light/light_smear.png" id="2_5tsgi"]
+[ext_resource type="Texture2D" uid="uid://bbruxgxs1unav" path="res://assets/sprites/enemies/saucer_enemy.png" id="2_8lmeo"]
+[ext_resource type="FontFile" uid="uid://co87kw26h5rcj" path="res://assets/fonts/gameboy_font.ttf" id="2_vm3t3"]
+[ext_resource type="PackedScene" uid="uid://dbh8lpivtd4oc" path="res://scenes/ui_elements/marker_button.tscn" id="3_6e5is"]
+[ext_resource type="Texture2D" uid="uid://blh74boka2ym1" path="res://assets/sprites/light/star_2.png" id="3_dmkah"]
+[ext_resource type="Texture2D" uid="uid://b7y1ox38jcc05" path="res://assets/sprites/player/player_ship.png" id="6_hf7pa"]
+[ext_resource type="Texture2D" uid="uid://cmwutk3uepra0" path="res://assets/sprites/ui/controller_notification.png" id="6_hrly8"]
+
+[sub_resource type="Gradient" id="Gradient_5o8lc"]
+offsets = PackedFloat32Array(0.306667, 1)
+colors = PackedColorArray(0.607843, 0.67451, 0.0588235, 1, 0.188235, 0.384314, 0.188235, 0)
+
+[sub_resource type="Animation" id="Animation_wlqs4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons/ButtonVBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LogoLabel/MiniLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShipTextureRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(432, 663)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons/CreditsButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sfcgk"]
+resource_name = "menu_enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons/ButtonVBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_secondary_animation"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShipTextureRect:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1.5),
+"update": 0,
+"values": [Vector2(432, 900), Vector2(432, 663)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons/CreditsButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ktpoq"]
+resource_name = "secondary_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoLabel/MiniLabel:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipTextureRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1.5, 1.5, 1.5),
+"update": 0,
+"values": [Vector2(432, 663), Vector2(432, 620), Vector2(432, 663)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ovyct"]
+_data = {
+&"RESET": SubResource("Animation_wlqs4"),
+&"menu_enter": SubResource("Animation_sfcgk"),
+&"secondary_animation": SubResource("Animation_ktpoq")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sp1xj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -9999)
+texture = ExtResource("2_8lmeo")
+
+[node name="Label" type="Label" parent="Sprite"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = -100.0
+offset_right = 6.0
+offset_bottom = -77.0
+grow_horizontal = 2
+text = "i really wish i was in this game..."
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.219608, 0.0588235, 1)
+metadata/_edit_lock_ = true
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="SmearCPUParticles2D" type="CPUParticles2D" parent="Particles"]
+position = Vector2(480, 0)
+amount = 15
+lifetime = 1.5
+texture = ExtResource("2_5tsgi")
+emission_shape = 3
+emission_rect_extents = Vector2(480, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 1000.0
+scale_amount_min = 0.9
+
+[node name="StarCPUParticles2D" type="CPUParticles2D" parent="Particles"]
+position = Vector2(480, 0)
+amount = 5
+lifetime = 1.5
+texture = ExtResource("3_dmkah")
+emission_shape = 3
+emission_rect_extents = Vector2(480, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 1000.0
+scale_amount_min = 0.9
+
+[node name="ControllerTextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 66.0
+offset_bottom = 66.0
+texture = ExtResource("6_hrly8")
+
+[node name="LogoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -405.0
+offset_top = 112.0
+offset_right = 405.0
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_vm3t3")
+theme_override_font_sizes/font_size = 90
+text = "ASTEROIDS"
+horizontal_alignment = 1
+
+[node name="MiniLabel" type="Label" parent="LogoLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -38.0
+offset_right = 11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.607843, 0.67451, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_vm3t3")
+theme_override_font_sizes/font_size = 30
+text = "GB"
+horizontal_alignment = 1
+
+[node name="TipLabel" type="Label" parent="LogoLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = 8.0
+offset_right = 436.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_vm3t3")
+theme_override_font_sizes/font_size = 16
+text = "TIP TEXT"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ShipTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -201.0
+offset_right = 48.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_hf7pa")
+
+[node name="ThrottleCPUParticles2D" type="CPUParticles2D" parent="ShipTextureRect"]
+position = Vector2(48, 82)
+amount = 20
+lifetime = 1.3
+speed_scale = 3.0
+local_coords = true
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 60.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_5o8lc")
+
+[node name="BottomLabels" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VersionLabel" type="Label" parent="BottomLabels"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -29.0
+offset_right = -8.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_vm3t3")
+theme_override_font_sizes/font_size = 20
+text = "Ver."
+horizontal_alignment = 2
+
+[node name="HighScoreLabel" type="Label" parent="BottomLabels"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = 210.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_vm3t3")
+theme_override_font_sizes/font_size = 20
+text = "Hi Score: 0"
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsButton" parent="Buttons" instance=ExtResource("3_6e5is")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -178.0
+offset_top = 4.0
+offset_right = -10.0
+offset_bottom = 44.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "CREDITS"
+is_scene_switcher = true
+target_scene = "res://scenes/menus/credits_menu.tscn"
+
+[node name="ButtonVBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -64.0
+offset_right = 152.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" parent="Buttons/ButtonVBoxContainer" instance=ExtResource("3_6e5is")]
+layout_mode = 2
+text = "GAME START"
+is_scene_switcher = true
+target_scene = "res://scenes/game_and_players/level.tscn"
+first_to_focus = true
+
+[node name="OptionButton" parent="Buttons/ButtonVBoxContainer" instance=ExtResource("3_6e5is")]
+layout_mode = 2
+text = "OPTION"
+is_scene_switcher = true
+target_scene = "res://scenes/menus/option_menu.tscn"
+
+[node name="QuitButton" parent="Buttons/ButtonVBoxContainer" instance=ExtResource("3_6e5is")]
+layout_mode = 2
+text = "QUIT"
+is_focused_by_key = true
+input_action_to_focus = "ui_cancel"
+is_quit_button = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ovyct")
+}
+autoplay = "menu_enter"

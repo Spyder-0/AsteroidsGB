@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://5lhpjreuqr5a"]
+
+[ext_resource type="Texture2D" uid="uid://cetocyjk0ip0p" path="res://assets/sprites/misc/singularly_white_coloured_pixel.png" id="1_4hyeb"]
+
+[sub_resource type="Animation" id="Animation_nyajq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.607843, 0.8, 0.0588235, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cwke1"]
+resource_name = "meteor_warn"
+length = 1.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.607843, 0.8, 0.0588235, 0.156863), Color(0.607843, 0.8, 0.0588235, 0), Color(0.607843, 0.8, 0.0588235, 0.156863), Color(0.607843, 0.8, 0.0588235, 0), Color(0.607843, 0.8, 0.0588235, 0.156863), Color(0.607843, 0.8, 0.0588235, 0), Color(0.607843, 0.8, 0.0588235, 0.156863), Color(0.607843, 0.8, 0.0588235, 0), Color(0.607843, 0.8, 0.0588235, 0.156863), Color(0.607843, 0.8, 0.0588235, 0), Color(0.607843, 0.8, 0.0588235, 0.156863), Color(0.607843, 0.8, 0.0588235, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1110"]
+_data = {
+&"RESET": SubResource("Animation_nyajq"),
+&"meteor_warn": SubResource("Animation_cwke1")
+}
+
+[node name="WarningSprite" type="Sprite2D"]
+modulate = Color(0.607843, 0.8, 0.0588235, 0)
+position = Vector2(0, 432)
+scale = Vector2(92, 944)
+texture = ExtResource("1_4hyeb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l1110")
+}
+autoplay = "meteor_warn"

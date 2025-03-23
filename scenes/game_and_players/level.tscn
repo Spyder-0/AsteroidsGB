@@ -1,0 +1,326 @@
+[gd_scene load_steps=21 format=3 uid="uid://cco7jxrrtjii0"]
+
+[ext_resource type="Script" uid="uid://nj55v86blk4u" path="res://scenes/game_and_players/level.gd" id="1_7psw2"]
+[ext_resource type="Texture2D" uid="uid://cetocyjk0ip0p" path="res://assets/sprites/misc/singularly_white_coloured_pixel.png" id="1_ekm0e"]
+[ext_resource type="Texture2D" uid="uid://csptai1iukyht" path="res://assets/sprites/light/star_1.png" id="3_sfeyg"]
+[ext_resource type="PackedScene" uid="uid://dxjki3838qj50" path="res://scenes/game_and_players/player.tscn" id="3_snteq"]
+[ext_resource type="Texture2D" uid="uid://blh74boka2ym1" path="res://assets/sprites/light/star_2.png" id="4_gg2oo"]
+[ext_resource type="PackedScene" uid="uid://c8t17ycwbxlb1" path="res://scenes/ui_elements/hud.tscn" id="4_gmyir"]
+[ext_resource type="Texture2D" uid="uid://drkynfsildhse" path="res://assets/sprites/light/star_3.png" id="5_8c2fs"]
+[ext_resource type="PackedScene" uid="uid://cqttmbwbqj3vj" path="res://scenes/game_and_players/asteroid.tscn" id="6_ilu5d"]
+[ext_resource type="AudioStream" uid="uid://blfspa0b41hw2" path="res://assets/audio/sfx/asteroid_explode.wav" id="9_ka87g"]
+[ext_resource type="AudioStream" uid="uid://i8elqw2c7o2q" path="res://assets/audio/sfx/power_up_collect.wav" id="9_vou6c"]
+[ext_resource type="AudioStream" uid="uid://bwhu8mfgdxnd1" path="res://assets/audio/sfx/ship_explode.wav" id="10_dlwov"]
+[ext_resource type="AudioStream" uid="uid://ccg66diqtm33q" path="res://assets/audio/music/meteor_mash.mp3" id="12_wplql"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luay2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sfeyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gg2oo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_di7yk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8c2fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sfeyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gg2oo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bljad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sfeyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gg2oo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_4x8yo"]
+offsets = PackedFloat32Array(0.513333, 1)
+colors = PackedColorArray(0.607843, 0.67451, 0.0588235, 1, 0.188235, 0.384314, 0.188235, 0)
+
+[sub_resource type="Animation" id="Animation_1x2n6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0588235, 0.219608, 0.0588235, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ucpae"]
+resource_name = "level_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.0588235, 0.219608, 0.0588235, 1), Color(0.188235, 0.384314, 0.188235, 1), Color(0.0588235, 0.219608, 0.0588235, 1), Color(0.188235, 0.384314, 0.188235, 1), Color(0.0588235, 0.219608, 0.0588235, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jimve"]
+resource_name = "player_death_flash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.0588235, 0.219608, 0.0588235, 1), Color(0.188235, 0.384314, 0.188235, 1), Color(0.0588235, 0.219608, 0.0588235, 1), Color(0.188235, 0.384314, 0.188235, 1), Color(0.0588235, 0.219608, 0.0588235, 1), Color(0.188235, 0.384314, 0.188235, 1), Color(0.0588235, 0.219608, 0.0588235, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xorca"]
+_data = {
+&"RESET": SubResource("Animation_1x2n6"),
+&"level_up": SubResource("Animation_ucpae"),
+&"player_death_flash": SubResource("Animation_jimve")
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_7psw2")
+home_scene = "res://scenes/menus/main_menu.tscn"
+game_over_scene = "res://scenes/menus/game_over_menu.tscn"
+
+[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.0588235, 0.219608, 0.0588235, 1)
+position = Vector2(480, 432)
+scale = Vector2(1500, 1349.65)
+texture = ExtResource("1_ekm0e")
+
+[node name="Star1Sprite2D2" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(-0.264583, 0.0318601)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("3_sfeyg")
+
+[node name="Star1Sprite2D3" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(0.133417, 0.211907)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("3_sfeyg")
+
+[node name="Star1Sprite2D5" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(-0.00525001, 0.0088912)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("3_sfeyg")
+
+[node name="Star2Sprite2D" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(-0.148583, -0.0933573)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("4_gg2oo")
+
+[node name="Star2Sprite2D3" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(0.219417, -0.170415)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("4_gg2oo")
+
+[node name="Star3Sprite2D" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(-0.105917, -0.259327)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("5_8c2fs")
+
+[node name="Star3Sprite2D2" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(0.151417, -0.0451969)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("5_8c2fs")
+
+[node name="Star3Sprite2D3" type="Sprite2D" parent="BackgroundSprite2D"]
+position = Vector2(-0.05925, 0.168192)
+scale = Vector2(0.000666667, 0.000740933)
+texture = ExtResource("5_8c2fs")
+
+[node name="StarAnimatedSprite2D" type="AnimatedSprite2D" parent="BackgroundSprite2D"]
+position = Vector2(0.0414167, -0.228949)
+scale = Vector2(0.000666667, 0.000740933)
+sprite_frames = SubResource("SpriteFrames_luay2")
+autoplay = "default"
+frame_progress = 0.501289
+
+[node name="StarAnimatedSprite2D2" type="AnimatedSprite2D" parent="BackgroundSprite2D"]
+position = Vector2(-0.196583, 0.211166)
+scale = Vector2(0.000666667, 0.000740933)
+sprite_frames = SubResource("SpriteFrames_di7yk")
+autoplay = "default"
+frame_progress = 0.856229
+
+[node name="StarAnimatedSprite2D3" type="AnimatedSprite2D" parent="BackgroundSprite2D"]
+position = Vector2(0.248083, 0.115585)
+scale = Vector2(0.000666667, 0.000740933)
+sprite_frames = SubResource("SpriteFrames_bljad")
+autoplay = "default"
+frame_progress = 0.702361
+
+[node name="StarAnimatedSprite2D4" type="AnimatedSprite2D" parent="BackgroundSprite2D"]
+position = Vector2(-0.257917, -0.231171)
+scale = Vector2(0.000666667, 0.000740933)
+sprite_frames = SubResource("SpriteFrames_bljad")
+autoplay = "default"
+frame_progress = 0.485022
+
+[node name="AmbientCPUParticles2D" type="CPUParticles2D" parent="."]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(480, 0)
+amount = 25
+lifetime = 50.0
+speed_scale = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 50.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_4x8yo")
+
+[node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="AsteroidSpawnPositions" type="Node2D" parent="SpawnPositions"]
+
+[node name="TopMarker2D" type="Marker2D" parent="SpawnPositions/AsteroidSpawnPositions"]
+position = Vector2(480, -100)
+
+[node name="RightMarker2D" type="Marker2D" parent="SpawnPositions/AsteroidSpawnPositions"]
+position = Vector2(1060, 432)
+
+[node name="BottomMarker2D" type="Marker2D" parent="SpawnPositions/AsteroidSpawnPositions"]
+position = Vector2(480, 964)
+
+[node name="LeftMarker2D" type="Marker2D" parent="SpawnPositions/AsteroidSpawnPositions"]
+position = Vector2(-100, 432)
+
+[node name="MeteorSpawnPositions" type="Node2D" parent="SpawnPositions"]
+
+[node name="Marker2D1" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(96, -200)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(192, -200)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(288, -200)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(384, -200)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(480, -200)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(576, -200)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(672, -200)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(768, -200)
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPositions/MeteorSpawnPositions"]
+position = Vector2(864, -200)
+
+[node name="Instances" type="Node2D" parent="."]
+
+[node name="Asteroids" type="Node2D" parent="Instances"]
+
+[node name="Asteroid" parent="Instances/Asteroids" instance=ExtResource("6_ilu5d")]
+position = Vector2(199, 240)
+
+[node name="Asteroid2" parent="Instances/Asteroids" instance=ExtResource("6_ilu5d")]
+position = Vector2(344, 597)
+
+[node name="Asteroid3" parent="Instances/Asteroids" instance=ExtResource("6_ilu5d")]
+position = Vector2(593, 116)
+
+[node name="Asteroid4" parent="Instances/Asteroids" instance=ExtResource("6_ilu5d")]
+position = Vector2(797, 539)
+
+[node name="Meteors" type="Node2D" parent="Instances"]
+
+[node name="Particles" type="Node2D" parent="Instances"]
+
+[node name="PowerUps" type="Node2D" parent="Instances"]
+
+[node name="Projectiles" type="Node2D" parent="Instances"]
+
+[node name="Player" parent="." instance=ExtResource("3_snteq")]
+position = Vector2(480, 432)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 432)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_wplql")
+volume_db = -8.0
+autoplay = true
+
+[node name="ExplosionSFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_ka87g")
+volume_db = -5.0
+
+[node name="PowerUpSFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_vou6c")
+volume_db = -10.0
+
+[node name="ShipExplodeSFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_dlwov")
+volume_db = -10.0
+pitch_scale = 0.75
+
+[node name="MeteorSpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("4_gmyir")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xorca")
+}
+
+[connection signal="buster_shoot" from="Player" to="." method="_on_player_buster_shoot"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="trigger_meteor_shower" from="Player" to="." method="_on_player_trigger_meteor_shower"]
+[connection signal="timeout" from="MeteorSpawnTimer" to="." method="_on_meteor_spawn_timer_timeout"]

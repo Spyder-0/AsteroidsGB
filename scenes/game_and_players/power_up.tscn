@@ -1,0 +1,150 @@
+[gd_scene load_steps=19 format=3 uid="uid://ervsy5ply03v"]
+
+[ext_resource type="Script" uid="uid://6vgfuw3ayky7" path="res://scenes/game_and_players/power_up.gd" id="1_4wf3i"]
+[ext_resource type="Texture2D" uid="uid://7qt5ne80m4an" path="res://assets/sprites/power_ups/health_power_up_animation/health_powerup_frame_1.png" id="1_erb0c"]
+[ext_resource type="Texture2D" uid="uid://bt8onh4ipgxkr" path="res://assets/sprites/power_ups/acceleration_power_up_animation/acceleration_powerup_frame_1.png" id="2_d7pig"]
+[ext_resource type="Texture2D" uid="uid://c7b6ixtrm1ueu" path="res://assets/sprites/power_ups/health_power_up_animation/health_powerup_frame_2.png" id="3_7jjkj"]
+[ext_resource type="Texture2D" uid="uid://cwfly50glfgkh" path="res://assets/sprites/power_ups/acceleration_power_up_animation/acceleration_powerup_frame_2.png" id="3_qj1tn"]
+[ext_resource type="Texture2D" uid="uid://d2xgxq5hdfyn2" path="res://assets/sprites/power_ups/rapid_power_up_animation/rapid_powerup_frame_1.png" id="4_ld58q"]
+[ext_resource type="Texture2D" uid="uid://yh8hv4ywhprj" path="res://assets/sprites/power_ups/buster_jam_power_down_animation/jam_powerdown_frame_1.png" id="4_ljq54"]
+[ext_resource type="Texture2D" uid="uid://dgb363usqyr6" path="res://assets/sprites/power_ups/rapid_power_up_animation/rapid_powerup_frame_2.png" id="5_tinfe"]
+[ext_resource type="Texture2D" uid="uid://bu62gki6npxml" path="res://assets/sprites/power_ups/buster_jam_power_down_animation/jam_powerdown_frame_2.png" id="5_vhta5"]
+[ext_resource type="Texture2D" uid="uid://0aakog63mi6o" path="res://assets/sprites/power_ups/buster_jam_power_down_animation/jam_powerdown_frame_3.png" id="6_2nxd4"]
+[ext_resource type="Texture2D" uid="uid://74ctsldeqda1" path="res://assets/sprites/power_ups/meteor_shower_power_down_animation/meteor_shower_powerdown_frame_1.png" id="9_ouc2l"]
+[ext_resource type="Texture2D" uid="uid://baihw36cj77in" path="res://assets/sprites/power_ups/meteor_shower_power_down_animation/meteor_shower_powerdown_frame_2.png" id="10_y33mv"]
+[ext_resource type="Texture2D" uid="uid://cn0hcyiepqkp7" path="res://assets/sprites/power_ups/meteor_shower_power_down_animation/meteor_shower_powerdown_frame_3.png" id="11_30ydn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0nyw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d7pig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qj1tn")
+}],
+"loop": true,
+"name": &"acceleration_power_up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ljq54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vhta5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2nxd4")
+}],
+"loop": true,
+"name": &"buster_jam_power_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_erb0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7jjkj")
+}],
+"loop": true,
+"name": &"heal_power_up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ouc2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_y33mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_30ydn")
+}],
+"loop": true,
+"name": &"meteor_shower_power_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ld58q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tinfe")
+}],
+"loop": true,
+"name": &"rapid_power_up",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26f56"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_manqs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hmlgf"]
+resource_name = "expire_warn"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mj3yg"]
+_data = {
+&"RESET": SubResource("Animation_manqs"),
+&"expire_warn": SubResource("Animation_hmlgf")
+}
+
+[node name="PowerUp" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_4wf3i")
+
+[node name="PowerUpAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f0nyw")
+animation = &"heal_power_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_26f56")
+
+[node name="PowerUpTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ExpireWarnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mj3yg")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]
+[connection signal="timeout" from="ExpireWarnTimer" to="." method="_on_expire_warn_timer_timeout"]

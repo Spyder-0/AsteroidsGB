@@ -1,0 +1,341 @@
+[gd_scene load_steps=23 format=3 uid="uid://brvf124ehxtc8"]
+
+[ext_resource type="PackedScene" uid="uid://dbh8lpivtd4oc" path="res://scenes/ui_elements/marker_button.tscn" id="1_8465b"]
+[ext_resource type="Script" uid="uid://cpjdetdww43d3" path="res://scenes/menus/option_menu.gd" id="1_f13xv"]
+[ext_resource type="FontFile" uid="uid://co87kw26h5rcj" path="res://assets/fonts/gameboy_font.ttf" id="2_epcut"]
+[ext_resource type="Texture2D" uid="uid://c5wuvw22iu6uc" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_1.png" id="3_gb2tf"]
+[ext_resource type="Texture2D" uid="uid://dccoaqq1gl4yi" path="res://assets/sprites/ui/keyboard_animations/fire_buttons/fire_click_frame_1.png" id="4_7koa4"]
+[ext_resource type="Texture2D" uid="uid://bdbgmvydxmerd" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_2.png" id="6_oc84r"]
+[ext_resource type="Texture2D" uid="uid://c12w7kujxvgi7" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_3.png" id="7_nrpvo"]
+[ext_resource type="Texture2D" uid="uid://d4l53seccc51h" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_4.png" id="8_wiuja"]
+[ext_resource type="Texture2D" uid="uid://cddhxj8vlr1w6" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_5.png" id="9_vwu7a"]
+[ext_resource type="Texture2D" uid="uid://bib2bybpe3d1w" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_6.png" id="10_oc6kl"]
+[ext_resource type="Texture2D" uid="uid://dxrlcbf1ldebb" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_7.png" id="11_hvm7q"]
+[ext_resource type="Texture2D" uid="uid://bohkpj4u86uel" path="res://assets/sprites/ui/keyboard_animations/arrow_buttons/arrow_click_frame_8.png" id="12_04g6s"]
+[ext_resource type="Texture2D" uid="uid://04ploalwta0d" path="res://assets/sprites/ui/keyboard_animations/fire_buttons/fire_click_frame_2.png" id="13_q6ymc"]
+[ext_resource type="Texture2D" uid="uid://biji017ovdnm4" path="res://assets/sprites/ui/keyboard_animations/fire_buttons/fire_click_frame_3.png" id="14_nveep"]
+[ext_resource type="Texture2D" uid="uid://d17ajvwvwuh6g" path="res://assets/sprites/ui/keyboard_animations/fire_buttons/fire_click_frame_4.png" id="15_xrlib"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cxlou"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mh5in"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_plrvv"]
+
+[sub_resource type="Animation" id="Animation_p4aci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeInColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KeybindsVBoxContainer/ArrowsHBoxContainer/ArrowsTextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_gb2tf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KeybindsVBoxContainer/FireHBoxContainer/KeysTextureRect:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_7koa4")]
+}
+
+[sub_resource type="Animation" id="Animation_wpkpb"]
+resource_name = "option_menu_enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeInColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_secondary_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_quo1r"]
+resource_name = "secondary_animation"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KeybindsVBoxContainer/ArrowsHBoxContainer/ArrowsTextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_gb2tf"), ExtResource("6_oc84r"), ExtResource("7_nrpvo"), ExtResource("8_wiuja"), ExtResource("9_vwu7a"), ExtResource("10_oc6kl"), ExtResource("11_hvm7q"), ExtResource("12_04g6s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KeybindsVBoxContainer/FireHBoxContainer/KeysTextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_7koa4"), ExtResource("13_q6ymc"), ExtResource("14_nveep"), ExtResource("15_xrlib")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mkxv4"]
+_data = {
+&"RESET": SubResource("Animation_p4aci"),
+&"option_menu_enter": SubResource("Animation_wpkpb"),
+&"secondary_animation": SubResource("Animation_quo1r")
+}
+
+[node name="OptionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f13xv")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.607843, 0.8, 0.0588235, 1)
+
+[node name="StyleBars" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TopBarColorRect" type="ColorRect" parent="StyleBars"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 81.0
+grow_horizontal = 2
+color = Color(0.188235, 0.384314, 0.188235, 1)
+
+[node name="BackButton" parent="StyleBars/TopBarColorRect" instance=ExtResource("1_8465b")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = -20.0
+offset_right = 198.0
+offset_bottom = 20.0
+grow_vertical = 2
+text = "Back"
+is_scene_switcher = true
+target_scene = "res://scenes/menus/main_menu.tscn"
+is_focused_by_key = true
+input_action_to_focus = "ui_cancel"
+first_to_focus = true
+
+[node name="OptionLabel" type="Label" parent="StyleBars/TopBarColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("2_epcut")
+theme_override_font_sizes/font_size = 32
+text = "Option"
+horizontal_alignment = 1
+
+[node name="BottomBarColorRect" type="ColorRect" parent="StyleBars"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.188235, 0.384314, 0.188235, 1)
+
+[node name="SaveViewButton" parent="StyleBars/BottomBarColorRect" instance=ExtResource("1_8465b")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Open Save Dir"
+is_save_file_opener = true
+
+[node name="KeybindsVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.5
+offset_top = -193.0
+offset_right = 144.5
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ArrowsHBoxContainer" type="HBoxContainer" parent="KeybindsVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ArrowsTextureRect" type="TextureRect" parent="KeybindsVBoxContainer/ArrowsHBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_gb2tf")
+stretch_mode = 3
+
+[node name="VSeparator" type="VSeparator" parent="KeybindsVBoxContainer/ArrowsHBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cxlou")
+
+[node name="KeybindArrowsExplainLabel" type="Label" parent="KeybindsVBoxContainer/ArrowsHBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_fonts/font = ExtResource("2_epcut")
+theme_override_font_sizes/font_size = 20
+text = "Arrows for menu navigation and ship control."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="KeybindsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mh5in")
+
+[node name="FireHBoxContainer" type="HBoxContainer" parent="KeybindsVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="KeysTextureRect" type="TextureRect" parent="KeybindsVBoxContainer/FireHBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_7koa4")
+stretch_mode = 3
+
+[node name="VSeparator" type="VSeparator" parent="KeybindsVBoxContainer/FireHBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cxlou")
+
+[node name="KeybindFireExplainLabel" type="Label" parent="KeybindsVBoxContainer/FireHBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_fonts/font = ExtResource("2_epcut")
+theme_override_font_sizes/font_size = 20
+text = "Z or X for ship buster."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="KeybindsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mh5in")
+
+[node name="FullscreenHBoxContainer" type="HBoxContainer" parent="KeybindsVBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="FullscreenToggleButton" parent="KeybindsVBoxContainer/FullscreenHBoxContainer" instance=ExtResource("1_8465b")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Fullscreen On"
+toggle_fullscreen = true
+
+[node name="VSeparator" type="VSeparator" parent="KeybindsVBoxContainer/FullscreenHBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxEmpty_plrvv")
+
+[node name="WindowedToggleButton" parent="KeybindsVBoxContainer/FullscreenHBoxContainer" instance=ExtResource("1_8465b")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Fullscreen Off"
+toggle_windowed = true
+
+[node name="FadeInColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0588235, 0.219608, 0.0588235, 1)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mkxv4")
+}
+autoplay = "option_menu_enter"

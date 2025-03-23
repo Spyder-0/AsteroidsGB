@@ -1,0 +1,485 @@
+[gd_scene load_steps=15 format=3 uid="uid://cwlwa0ww6eljk"]
+
+[ext_resource type="Texture2D" uid="uid://csptai1iukyht" path="res://assets/sprites/light/star_1.png" id="1_64fhc"]
+[ext_resource type="Script" uid="uid://bkb8lkxcu1rc0" path="res://scenes/menus/credits_menu.gd" id="1_i6rgd"]
+[ext_resource type="PackedScene" uid="uid://dbh8lpivtd4oc" path="res://scenes/ui_elements/marker_button.tscn" id="1_tfsxg"]
+[ext_resource type="FontFile" uid="uid://co87kw26h5rcj" path="res://assets/fonts/gameboy_font.ttf" id="2_p1obg"]
+[ext_resource type="Texture2D" uid="uid://b7y1ox38jcc05" path="res://assets/sprites/player/player_ship.png" id="4_yn7g4"]
+[ext_resource type="Texture2D" uid="uid://l815m4x2p1p6" path="res://assets/sprites/enemies/asteroid_small.png" id="6_k7alr"]
+
+[sub_resource type="Curve" id="Curve_3rf7w"]
+_data = [Vector2(0.0955056, 0.098901), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_m5ayx"]
+offsets = PackedFloat32Array(0.306667, 1)
+colors = PackedColorArray(0.607843, 0.67451, 0.0588235, 1, 0.188235, 0.384314, 0.188235, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2m5w"]
+
+[sub_resource type="Gradient" id="Gradient_nmlfk"]
+offsets = PackedFloat32Array(0.306667, 1)
+colors = PackedColorArray(0.607843, 0.67451, 0.0588235, 1, 0.188235, 0.384314, 0.188235, 0)
+
+[sub_resource type="Animation" id="Animation_1g0sj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeInColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipTextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1200, 816)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AsteroidTextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-336, 752)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AsteroidTextureRect:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShipTextureRect:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.71239]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrashLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_54t1g"]
+resource_name = "credits_menu_enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeInColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_secondary_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4y148"]
+resource_name = "secondary_animation"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShipTextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 8.03333, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1200, 816), Vector2(-336, 816), Vector2(-336, 816), Vector2(1200, 816)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AsteroidTextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 8, 10, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-336, 752), Vector2(-336, 752), Vector2(1200, 752), Vector2(1200, 752), Vector2(-336, 752)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AsteroidTextureRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 8, 10, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 6.28319, 6.28319, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShipTextureRect:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.9, 8, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [4.71239, 4.71239, 1.5708, 4.71239]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(14.0667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"temporary_shake"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrashLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 14.0667, 14.4334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_evf15"]
+_data = {
+&"RESET": SubResource("Animation_1g0sj"),
+&"credits_menu_enter": SubResource("Animation_54t1g"),
+&"secondary_animation": SubResource("Animation_4y148")
+}
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i6rgd")
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="SmearCPUParticles2D" type="CPUParticles2D" parent="Particles"]
+position = Vector2(480, 432)
+amount = 200
+lifetime = 15.0
+preprocess = 8.0
+speed_scale = 3.0
+local_coords = true
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_3rf7w")
+color_ramp = SubResource("Gradient_m5ayx")
+
+[node name="StarCPUParticles2D" type="CPUParticles2D" parent="Particles"]
+position = Vector2(480, 432)
+amount = 50
+texture = ExtResource("1_64fhc")
+lifetime = 15.0
+preprocess = 8.0
+speed_scale = 3.0
+local_coords = true
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_3rf7w")
+
+[node name="BackButton" parent="." instance=ExtResource("1_tfsxg")]
+layout_mode = 1
+offset_left = 70.0
+offset_top = 20.5
+offset_right = 198.0
+offset_bottom = 60.5
+text = "BACK"
+is_scene_switcher = true
+target_scene = "res://scenes/menus/main_menu.tscn"
+is_focused_by_key = true
+input_action_to_focus = "ui_cancel"
+first_to_focus = true
+
+[node name="MiddleVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -20.0
+offset_right = 31.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CreditTitleLabel1" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.67451, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.188235, 0.384314, 0.188235, 0.470588)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "Programming and Art:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditLabel1" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "Hamza - Spyder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f2m5w")
+
+[node name="CreditTitleLabel2" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.67451, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.188235, 0.384314, 0.188235, 0.470588)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "Music:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditLabel2" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "\"Ready Up\"
+\"Meteor Mash\"
+by @ryan.atari on Instagram"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f2m5w")
+
+[node name="CreditTitleLabel3" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.67451, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.188235, 0.384314, 0.188235, 0.470588)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "Software:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditLabel3" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "Godot Engine
+LibreSprite
+Kdenlive
+JSFXR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f2m5w")
+
+[node name="CreditTitleLabel4" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.67451, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.188235, 0.384314, 0.188235, 0.470588)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "Font:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditLabel4" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 22
+text = "\"Early Gameboy\"
+By Jimmy Campbell on Dafont.com"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShipTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 720.0
+offset_top = 384.0
+offset_right = 816.0
+offset_bottom = 472.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71239
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_yn7g4")
+
+[node name="ThrottleCPUParticles2D" type="CPUParticles2D" parent="ShipTextureRect"]
+position = Vector2(48, 80.75)
+amount = 30
+lifetime = 1.5
+speed_scale = 3.0
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 60.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_nmlfk")
+
+[node name="AsteroidTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -816.0
+offset_top = 320.0
+offset_right = -760.0
+offset_bottom = 376.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(28, 28)
+texture = ExtResource("6_k7alr")
+
+[node name="CrashLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0001
+offset_top = -94.0
+offset_right = -29.0001
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.436332
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("2_p1obg")
+theme_override_font_sizes/font_size = 30
+text = "!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FadeInColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 240.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0588235, 0.219608, 0.0588235, 1)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 432)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_evf15")
+}
+autoplay = "credits_menu_enter"

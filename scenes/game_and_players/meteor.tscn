@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsjqeenjxqv20"]
+
+[ext_resource type="Texture2D" uid="uid://c7uluk5hff68i" path="res://assets/sprites/enemies/falling_meteor.png" id="1_ddlcp"]
+[ext_resource type="Script" uid="uid://c6go5wa7du61d" path="res://scenes/game_and_players/meteor.gd" id="1_x0f8a"]
+[ext_resource type="Texture2D" uid="uid://c0mtqf6m0x8fs" path="res://assets/sprites/light/light_smear.png" id="3_t2ts2"]
+[ext_resource type="AudioStream" uid="uid://llyspeaj6ybg" path="res://assets/audio/sfx/meteor_fall.wav" id="4_ikrf3"]
+
+[sub_resource type="Curve" id="Curve_vivbf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.505494), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_r4cwr"]
+offsets = PackedFloat32Array(0.306667, 1)
+colors = PackedColorArray(0.607843, 0.67451, 0.0588235, 1, 0.188235, 0.384314, 0.188235, 0)
+
+[sub_resource type="Gradient" id="Gradient_3msc2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Meteor" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_x0f8a")
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="TrailCPUParticles2D" type="CPUParticles2D" parent="Particles"]
+position = Vector2(0, -50)
+amount = 100
+lifetime = 3.0
+speed_scale = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(30, 10)
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 8.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_vivbf")
+color_ramp = SubResource("Gradient_r4cwr")
+
+[node name="TrailCPUParticles2D2" type="CPUParticles2D" parent="Particles"]
+position = Vector2(0, -50)
+amount = 10
+lifetime = 3.0
+speed_scale = 3.0
+texture = ExtResource("3_t2ts2")
+emission_shape = 3
+emission_rect_extents = Vector2(30, 0)
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.8
+color_ramp = SubResource("Gradient_3msc2")
+
+[node name="MeteorSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ddlcp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-24, -40, 16, -40, 16, -32, 24, -32, 24, -24, 32, -24, 32, 0, 40, 0, 40, 16, 32, 16, 32, 24, 24, 24, 24, 32, 8, 32, 8, 40, -24, 40, -24, 32, -32, 32, -32, 16, -40, 16, -40, -16, -32, -16, -32, -32, -24, -32)
+
+[node name="MeteorFallSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ikrf3")
+volume_db = -5.0
+autoplay = true
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]

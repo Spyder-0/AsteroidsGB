@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvgsapgfscidy"]
+
+[ext_resource type="Script" uid="uid://cldcu0bjtr2vs" path="res://autoload/juke_box_manager.gd" id="1_7yveu"]
+[ext_resource type="AudioStream" uid="uid://cq3dy1ycxyy" path="res://assets/audio/music/ready_up.mp3" id="2_hm17b"]
+
+[node name="JukeBoxManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_7yveu")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hm17b")
+volume_db = -11.0

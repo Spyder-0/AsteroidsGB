@@ -1,0 +1,28 @@
+Actual GameBoy Resolution: 160x144
+Project Resolution: 960x864 (Scale Mode: Viewport)
+Unmodified Resolution: 1280x720
+Window Stretching Documentation: https://docs.godotengine.org/en/stable/tutorials/rendering/multiple_resolutions.html#stretch-settings
+
+GameBoy Palette Colours (Lightest to Darkest):
+- #9bcc0f
+- #9bac0f
+- #306230
+- #0f380f
+
+Signal List:
+- Button: 3 Signals
+- Laser -> Timer
+- Level -> Player (buster_shoot)
+- Level -> Player (dead)
+- Level -> Player (meteorshower)
+- Level -> Timer
+- Player -> CooldownTimer
+- Player -> InvincibilityTimer
+- Laser
+- Powerup
+- Powerup -> PowerUpTimer
+- Powerup -> ExpireWarnTimer
+- Asteroid
+- Level -> Asteroids (Manual)
+- Meteor
+- Meteor -> Timer

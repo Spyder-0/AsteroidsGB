@@ -1,0 +1,456 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjjsyyrg6dpj1"]
+
+[ext_resource type="PackedScene" uid="uid://dbh8lpivtd4oc" path="res://scenes/ui_elements/marker_button.tscn" id="1_6rvn8"]
+[ext_resource type="Script" uid="uid://dcbhy8rqjmpn6" path="res://scenes/menus/game_over_menu.gd" id="1_i7d4j"]
+[ext_resource type="Texture2D" uid="uid://csptai1iukyht" path="res://assets/sprites/light/star_1.png" id="2_31pud"]
+[ext_resource type="FontFile" uid="uid://co87kw26h5rcj" path="res://assets/fonts/gameboy_font.ttf" id="3_vqfh2"]
+[ext_resource type="AudioStream" uid="uid://blfspa0b41hw2" path="res://assets/audio/sfx/asteroid_explode.wav" id="5_1t2eq"]
+[ext_resource type="AudioStream" uid="uid://dkptlo3j2tvky" path="res://assets/audio/sfx/notification.wav" id="5_kqnbp"]
+
+[sub_resource type="Curve" id="Curve_lnotm"]
+_data = [Vector2(0.0955056, 0.098901), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_npb15"]
+offsets = PackedFloat32Array(0.306667, 1)
+colors = PackedColorArray(0.607843, 0.67451, 0.0588235, 1, 0.188235, 0.384314, 0.188235, 1)
+
+[sub_resource type="Animation" id="Animation_i5kvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(75, 112)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MiddleVBoxContainer/HighScoreLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MiddleVBoxContainer/ScoreLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuButton:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(344, 824)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NewHighScoreNotification:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.607843, 0.8, 0.0588235, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleLabel/MessageLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FadeInColorRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yrp71"]
+resource_name = "game_over_enter"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleLabel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2.2337),
+"update": 0,
+"values": [Vector2(75, -200), Vector2(75, 112)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MiddleVBoxContainer/HighScoreLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MiddleVBoxContainer/ScoreLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuButton:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(344, 900), Vector2(344, 824)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplosionSFX")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_1t2eq")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_1t2eq")
+}],
+"times": PackedFloat32Array(1.3, 2)
+}
+tracks/4/use_blend = true
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"display_high_score_notification"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.3, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"shake_camera"
+}, {
+"args": [],
+"method": &"shake_camera"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TitleLabel/MessageLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.933333, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FadeInColorRect:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2us8h"]
+resource_name = "new_high_score"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewHighScoreNotification:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.607843, 0.8, 0.0588235, 1), Color(0.188235, 0.384314, 0.188235, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qtrm"]
+_data = {
+&"RESET": SubResource("Animation_i5kvd"),
+&"game_over_enter": SubResource("Animation_yrp71"),
+&"new_high_score": SubResource("Animation_2us8h")
+}
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i7d4j")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.219608, 0.0588235, 1)
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="SmearCPUParticles2D" type="CPUParticles2D" parent="Particles"]
+position = Vector2(480, 432)
+amount = 200
+lifetime = 15.0
+preprocess = 7.0
+speed_scale = 3.0
+local_coords = true
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+tangential_accel_min = 5.0
+tangential_accel_max = 10.0
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_lnotm")
+color_ramp = SubResource("Gradient_npb15")
+
+[node name="StarCPUParticles2D" type="CPUParticles2D" parent="Particles"]
+position = Vector2(480, 432)
+amount = 50
+texture = ExtResource("2_31pud")
+lifetime = 15.0
+preprocess = 7.0
+speed_scale = 3.0
+local_coords = true
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_lnotm")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -405.0
+offset_top = 112.0
+offset_right = 405.0
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_vqfh2")
+theme_override_font_sizes/font_size = 90
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="TitleLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = 8.0
+offset_right = 436.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_vqfh2")
+theme_override_font_sizes/font_size = 18
+text = "Message Text"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MiddleVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -12.0
+offset_right = 75.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighScoreLabel" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_vqfh2")
+theme_override_font_sizes/font_size = 30
+text = "Hi Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MiddleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_vqfh2")
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewHighScoreNotification" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -234.0
+offset_right = 240.0
+offset_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.607843, 0.8, 0.0588235, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_vqfh2")
+theme_override_font_sizes/font_size = 30
+text = "! New High Score !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" parent="." instance=ExtResource("1_6rvn8")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -40.0
+offset_right = 136.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "MAIN MENU"
+is_scene_switcher = true
+target_scene = "res://scenes/menus/main_menu.tscn"
+is_focused_by_key = true
+input_action_to_focus = "ui_cancel"
+first_to_focus = true
+
+[node name="FadeInColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0588235, 0.219608, 0.0588235, 1)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 432)
+
+[node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+
+[node name="NotificationSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kqnbp")
+volume_db = -10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8qtrm")
+}
+autoplay = "game_over_enter"
