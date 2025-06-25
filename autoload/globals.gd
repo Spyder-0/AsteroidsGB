@@ -21,7 +21,11 @@ var player_score: int = 0 # Ingame var.
 var start_fullscreen: bool = false
 var minimum_meteor_spawn_time: int = 10
 var maximum_meteor_spawn_time: int = 20
+var is_on_web: bool = false
 
+
+func _ready():
+	is_on_web = check_if_on_web()
 
 func _process(_delta: float):
 	# At any point in the game, if the user presses F11, the window should fullscreen/unfullscreen.
@@ -34,6 +38,11 @@ func _process(_delta: float):
 			Globals.start_fullscreen = false
 		
 		SaveManager.save_player_data()
+
+func check_if_on_web() -> bool:
+	if OS.get_name() == "Web":
+		return true
+	return false
 
 func reset_player_variables():
 	player_health = MAX_PLAYER_HEALTH

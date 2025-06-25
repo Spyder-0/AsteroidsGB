@@ -216,8 +216,8 @@ metadata/_edit_lock_ = true
 [node name="SmearCPUParticles2D" type="CPUParticles2D" parent="Particles"]
 position = Vector2(480, 0)
 amount = 15
-lifetime = 1.5
 texture = ExtResource("2_5tsgi")
+lifetime = 1.5
 emission_shape = 3
 emission_rect_extents = Vector2(480, 1)
 direction = Vector2(0, 1)
@@ -230,8 +230,8 @@ scale_amount_min = 0.9
 [node name="StarCPUParticles2D" type="CPUParticles2D" parent="Particles"]
 position = Vector2(480, 0)
 amount = 5
-lifetime = 1.5
 texture = ExtResource("3_dmkah")
+lifetime = 1.5
 emission_shape = 3
 emission_rect_extents = Vector2(480, 1)
 direction = Vector2(0, 1)
@@ -447,6 +447,6 @@ is_quit_button = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ovyct")
+&"": SubResource("AnimationLibrary_ovyct")
 }
 autoplay = "menu_enter"

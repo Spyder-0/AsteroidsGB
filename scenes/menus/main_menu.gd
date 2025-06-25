@@ -4,6 +4,7 @@ extends Control
 @onready var controller_sprite: TextureRect = $ControllerTextureRect
 @onready var game_version_label: Label = $BottomLabels/VersionLabel
 @onready var high_score_label: Label = $BottomLabels/HighScoreLabel
+@onready var quit_button: Button = $Buttons/ButtonVBoxContainer/QuitButton
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var secondary_animation: StringName = "secondary_animation"
@@ -41,6 +42,11 @@ var game_version: String = ProjectSettings.get_setting("application/config/versi
 func _ready():
 	update_labels()
 	Globals.reset_player_variables()
+	
+	# Remove quit button if game is running on web platform.
+	if Globals.is_on_web:
+		quit_button.is_focused_by_key = false
+		quit_button.hide()
 	
 	# Show a small notification when a controller is detected.
 	if Input.get_connected_joypads().size() > 0:

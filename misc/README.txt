@@ -92,3 +92,4 @@ Release Notes:
 - Version 1.0.3:
 	- Fixed a typo in the Option Menu.
 	- Adjusted (font) credits.
+	- Made some fixes for the web version.
