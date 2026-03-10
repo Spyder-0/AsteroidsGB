@@ -20,6 +20,10 @@ Controls can be found in the game's Option Menu, or the `README.txt` file includ
 # Installation
 Builds can be downloaded from the `Releases` page, and download instructions will be included there as well.
 
+# Support the Project
+Liked the project? Your support would mean a lot! <br/>
+- Bitcoin Address: `bc1qxhww6cqhggxn85fl92m8pn4vpp4493wgqnju2s`
+
 # Credits
 Credits will be included in the game and `README.txt` file bundled with the executable.
 - Font: https://www.dafont.com/jimmy-campbell.d5241
